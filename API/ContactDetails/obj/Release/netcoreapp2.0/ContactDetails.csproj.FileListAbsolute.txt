@@ -1,0 +1,11 @@
+D:\Projects\ContactDetails\ContactDetails\ContactDetails\bin\Release\netcoreapp2.0\ContactDetails.deps.json
+D:\Projects\ContactDetails\ContactDetails\ContactDetails\bin\Release\netcoreapp2.0\ContactDetails.runtimeconfig.json
+D:\Projects\ContactDetails\ContactDetails\ContactDetails\bin\Release\netcoreapp2.0\ContactDetails.runtimeconfig.dev.json
+D:\Projects\ContactDetails\ContactDetails\ContactDetails\bin\Release\netcoreapp2.0\ContactDetails.dll
+D:\Projects\ContactDetails\ContactDetails\ContactDetails\bin\Release\netcoreapp2.0\ContactDetails.pdb
+D:\Projects\ContactDetails\ContactDetails\ContactDetails\obj\Release\netcoreapp2.0\ContactDetails.csprojAssemblyReference.cache
+D:\Projects\ContactDetails\ContactDetails\ContactDetails\obj\Release\netcoreapp2.0\ContactDetails.csproj.CoreCompileInputs.cache
+D:\Projects\ContactDetails\ContactDetails\ContactDetails\obj\Release\netcoreapp2.0\ContactDetails.AssemblyInfoInputs.cache
+D:\Projects\ContactDetails\ContactDetails\ContactDetails\obj\Release\netcoreapp2.0\ContactDetails.AssemblyInfo.cs
+D:\Projects\ContactDetails\ContactDetails\ContactDetails\obj\Release\netcoreapp2.0\ContactDetails.dll
+D:\Projects\ContactDetails\ContactDetails\ContactDetails\obj\Release\netcoreapp2.0\ContactDetails.pdb
