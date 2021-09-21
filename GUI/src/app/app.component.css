@@ -1,0 +1,148 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+
+  .fix-editor {
+    display:none;
+  }
+  .icon-wrapper {
+    display:inline-block;
+    padding:10px;
+  }
+
+
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+  .fixedWidth {
+    width: 100px;overflow: hidden;
+  }
+  .fixedWidth1 {
+    width: 70px;overflow: hidden;
+  }
+  .fixedWidth2 {
+    width: 200px;overflow: hidden;
+  }
+  .MinfixedWidth {
+    width: 50px;overflow: hidden;
+  }
+  .MinfixedWidth {
+    width: 50px;overflow: hidden;
+  }
+  /* ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #888;
+  } */
+  .table-scroll {
+    position:relative;
+    max-width:100%;
+    margin:auto;
+    overflow:hidden;
+    border: 1px solid #ddd;
+  }
+  .table-wrap {
+    width:100%;
+    overflow:auto;
+  }
+  .table-scroll table {
+    width:100%;
+    margin:auto;
+    border-collapse:separate;
+    border-spacing:0;
+  }
+  .table-scroll th, .table-scroll td {
+    padding:5px 10px;
+    border: 1px solid #ddd;
+    background:#fff;
+    white-space:nowrap;
+    vertical-align:top;
+  }
+  .table-scroll thead, .table-scroll tfoot {
+    background:#f9f9f9;
+  }
+  .clone {
+    position:absolute;
+    top:0;
+    left:0;
+    pointer-events:none;
+  }
+  .clone th, .clone td {
+    visibility:hidden
+  }
+  .clone td, .clone th {
+    border-color:transparent
+  }
+  .clone tbody th {
+    visibility:visible;
+  }
+  .clone .fixed-side {
+    border: 1px solid #ddd;
+    visibility:visible;
+  }
+  .clone thead, .clone tfoot{background:transparent;}
+
+  

@@ -1,0 +1,225 @@
+<style>
+  .cover-container {
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: auto;
+  }
+
+  .cover-item {
+    position: relative;
+    display: inline-block;
+    margin: 8px 8px;
+    /* box-shadow: 2px 2px 4px #bbb; */
+    box-shadow: none;
+    border-top-right-radius: 4px;
+    width: 116px;
+    height: 105px;
+    vertical-align: bottom;
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+</style>
+
+<div class="col-md-12">&nbsp;</div>
+<div class="col-md-12 mobilePadding" *ngIf="dashBoardView">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <b>{{labels.contactInfoLabel}}</b>
+    </div>
+    <div class="panel-body">
+      <div class="row form inline col-sm-12 mobileViewMargin" style="margin:0">
+        <div class="bg-success row">
+          <div 
+            class="col-lg-3 col-sm-3 col-md-3 col-xs-6" style="text-align: center">
+            <a (click) = "ViewContactDetails()">
+              <div class="icon-wrapper">
+                <i class="fa fa-bars custom-icon test" data-placement="top" data-toggle="tooltip"
+                  title="Contact Information">
+                  <span class="fix-editor">&nbsp;</span>
+                </i>
+              </div>
+              <p>Contact Management System</p>
+            </a>
+          </div>
+       
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div id="snackbar1">some Text</div> -->
+
+<div class="col-md-12 mobilePadding" *ngIf="!dashBoardView">
+  <div class="container-fluid" style="padding-left: 0px;">
+    <div class="panel panel-default">
+      <div class="panel-heading ConsolidationPanel">
+        <strong>
+           <span>Contact Information</span>
+   
+          </strong>
+
+        <button type="button" (click)="dashBoardView = true"
+          data-toggle="tooltip" title="Back" 
+          style="margin-right: 5px;" class="btn btn-info btn-xs btn-circle pull-right circleBtnMargin pull-right"><span
+            class="fa fa-arrow-left fa-1x"></span></button>
+      
+      
+       
+        <div 
+          class="input-group pull-right col-md-3 col-sm-6 hidden-xs" style="margin-top: -7px;margin-right: 18px;">
+          <span class="input-group-addon"><label class="checkbox-inline"><input type="checkbox" [(ngModel)]="showAll"
+                value="" (change)="ShowAllRecords();">Record Per Page</label></span>
+          <input id="msg" type="number" [(ngModel)]="itemPerPage" [disabled]="showAll"
+            (keypress)="allowOnlyNumbers($event)" class="form-control" name="msg" placeholder="Record Per Page">
+        </div>
+      </div>
+      <button type="button btn-sm" data-toggle="modal" style="margin-left: 16px;margin-top: 6px;background-color: #5ab733;"  (click) = "AddContactDtls()" data-target="#contactDtlsModal" title="Add Contact"  class="btn btn-primary btn-sm">Add Contact</button>
+
+      <div class="panel-body" [ngStyle]="{'max-height':panelScrollHeight+'px'}"
+        style="padding-bottom:0px;overflow-y: scroll;">
+        
+   
+      <div class="col-md-12 col-sm-12 col-xs-12 mobileViewPadding"
+      *ngIf="contactDetailsList != null && contactDetailsList != undefined && contactDetailsList.length > 0">
+      <div class="table-responsive">
+        <table *ngIf="itemPerPage && itemPerPage > 0" class="table table-bordered table-hover table-condensed"
+          id="Consolidation" [mfData]="contactDetailsList" #mf="mfDataTable" [(mfSortBy)]="sortBy"
+          [(mfSortOrder)]="sortOrder" [mfRowsOnPage]="itemPerPage" style="margin-bottom: 100px;">
+          <thead>
+            <tr class="success">
+              <th class="col-md-2">Emp Id</th>
+              <th class="col-md-3">Name</th>
+              <th class="col-md-2">Phone</th>
+              <th class="col-md-2">Email Id.</th>
+              <th class="col-md-2">Action</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let itemObj of mf.data;let i=index">
+              <tr class="item" style="cursor: pointer;"
+                [ngStyle]="{'background-color':itemObj.IdContactDetails == 1 ? 'rgb(204, 230, 255)':''}">
+                <td class="col-md-2">{{itemObj.IdContactDetails}}</td>
+                <td class="col-md-3">{{itemObj.FirstName}} &nbsp; {{itemObj.LastName}}</td>
+                <td class="col-md-2">{{itemObj.PhoneNo}}</td>
+                <td class="col-md-2">{{itemObj.Email}}</td>
+               
+                <td class="col-md-2">
+                  <div style="width: 100%;margin: 0px;" class="action_btn">
+                    <ng-container>
+                      
+                      <i class="fa fa-pencil btn-custom-icon"
+                        style="width:20px; height:20px;margin-right: 3px;" data-toggle="tooltip"
+                        (click)="EditContactDtls(itemObj)" data-toggle="modal" data-target="#contactDtlsModal" title="Edit Contact"
+                        data-placement="top" title="Edit Contact" aria-hidden="true"></i>
+
+                        <i class="fa fa-ban btn-custom-icon"
+                        style="width:20px; height:20px;margin-right: 3px;" data-toggle="tooltip"
+                        (click)="DeactivateContact(itemObj)"  title="Deactivate Contact"
+                        data-placement="top" aria-hidden="true"></i>
+
+                    </ng-container>
+                  </div>
+              
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="1000" style="padding: -1%;">
+                <mfBootstrapPaginator style="float: right;height: 59px;margin-top: -15px;"></mfBootstrapPaginator>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+   
+       
+      </div>
+    
+     
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="contactDtlsModal" tabindex="-1" role="dialog" aria-labelledby="contactDtlsModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #5ab733">
+        
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <!-- <span aria-hidden="true"></span> -->&times;
+        </button>
+        <h5 class="modal-title" id="contactDtlsModalLabel">{{labels.contactInfoModalLabel}}</h5>
+        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+      </div>
+      <div class="modal-body">
+        
+        <div class="row">
+          <div class=" col-lg-12 col-md-12 col-xs-12">
+              <div class="col-sm-3  col-lg-3 col-md-3 col-xs-12 top10">
+                  <label>First Name:</label>
+              </div>
+              <div class="col-sm-8 col-lg-8 col-md-8  col-xs-12  top10">
+                  <input type="text" name="firstName" class="form-control" placeholder="Enter First Name"
+                      [(ngModel)]="contactDetails.FirstName" (click)="$event.target.select()" autocomplete="off" >
+              </div>
+          </div>
+
+          <div class=" col-lg-12 col-md-12 col-xs-12">
+              <div class="col-sm-3  col-lg-3 col-md-3 col-xs-12 top10">
+                  <label>Last Name:</label>
+              </div>
+              <div class="col-sm-8 col-lg-8 col-md-8  col-xs-12  top10">
+                  <input type="text" name="lastName" class="form-control" placeholder="Enter Last Name"
+                      [(ngModel)]="contactDetails.LastName"
+                      (click)="$event.target.select()" autocomplete="off" >
+              </div>
+          </div>
+
+          <div class=" col-lg-12 col-md-12 col-xs-12">
+            <div class="col-sm-3  col-lg-3 col-md-3 col-xs-12 top10">
+                <label>Email Id:</label>
+            </div>
+            <div class="col-sm-8 col-lg-8 col-md-8  col-xs-12  top10">
+                <input type="text" name="emailId" class="form-control" placeholder="Enter Email Id"
+                    [(ngModel)]="contactDetails.Email"
+                    (click)="$event.target.select()" autocomplete="off" >
+            </div>
+        </div>
+
+        <div class=" col-lg-12 col-md-12 col-xs-12" >
+          <div class="col-sm-3 col-lg-3 col-md-3 col-xs-12 top10">
+              <label>Phone No:</label>
+          </div>
+          <div class="col-sm-8 col-lg-8 col-md-8  col-xs-12  top10">
+              <input type="text" name="phoneNo" class="form-control" placeholder="Enter Phone No"
+                  [(ngModel)]="contactDetails.PhoneNo"
+                  (click)="$event.target.select()" autocomplete="off" >
+          </div>
+      </div>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="SaveEmpDtls()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="snackbar">Some Text</div>
+
+
+
+
+
+
+
+
+
