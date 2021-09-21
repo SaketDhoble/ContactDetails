@@ -17,6 +17,6 @@ namespace ContactDetails.StaticStuff
     {
         public static String DefaultErrorMsg = "Error - 00 : Record Could Not Be Saved";
         public static String DefaultSuccessMsg = "Success - Record Saved Successfully";
-
+        public static String IdentityColumnQuery = "Select @@Identity";
     }
 }

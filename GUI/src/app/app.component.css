@@ -122,7 +122,7 @@
     vertical-align:top;
   }
   .table-scroll thead, .table-scroll tfoot {
-    background:#f9f9f9;
+    background:darkkhaki;
   }
   .clone {
     position:absolute;
@@ -143,6 +143,8 @@
     border: 1px solid #ddd;
     visibility:visible;
   }
+  
+  
   .clone thead, .clone tfoot{background:transparent;}
 
   

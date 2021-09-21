@@ -42,14 +42,14 @@ export class ContactDetailsService {
             .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }
 
-    DeacticateContactDtls(contactDetailsId: number): Observable<ResultMessage> {
+    DeacticateContactDtls(contactDetails: ContactDetails): Observable<ResultMessage> {
         // var params = {
         //     contactDetailsId: contactDetailsId,
         // };
         // let bodyString = JSON.stringify(params);
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        return this.http.put(myGlobalVal.UpdateContactDetailsTO, contactDetailsId, options)
+        return this.http.put(myGlobalVal.PutUpdateContactDetailsTO, contactDetails, options)
             .map((res: Response) => res.json())
             .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
     }

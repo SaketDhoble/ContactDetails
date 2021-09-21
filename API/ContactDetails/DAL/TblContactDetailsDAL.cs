@@ -240,8 +240,14 @@ namespace ContactDetails.DAL
             cmdInsert.Parameters.Add("@UpdatedBy", System.Data.SqlDbType.Int).Value = tblContactDetailsTO.UpdatedBy;
             cmdInsert.Parameters.Add("@UpdatedOn", System.Data.SqlDbType.DateTime).Value = tblContactDetailsTO.UpdatedOn;
 
+            if (cmdInsert.ExecuteNonQuery() == 1)
+            {
+                cmdInsert.CommandText = Constants.IdentityColumnQuery;
+                tblContactDetailsTO.IdContactDetails = Convert.ToInt32(cmdInsert.ExecuteScalar());
+                return 1;
+            }
 
-            return cmdInsert.ExecuteNonQuery();
+            return 0;
         }
         #endregion
 
